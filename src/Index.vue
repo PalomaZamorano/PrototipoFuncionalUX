@@ -2,29 +2,48 @@
   <div class="row">
 
     <div class="col-6 col-12-narrower">
-    <md-card>
+    <md-card  v-for="(publics,key) in publi"  :key="`publics-${key}`"> 
+      
       <md-card-header>
         <md-avatar>
-          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT2QRbAm-HvLlVuDqXq-Xf9d1yywpv_wzXA2Ghga-38VqqzXh3pmQ" alt="Avatar">
+          <img :src= publics.photo alt="Avatar">
         </md-avatar>
 
-        <div class="md-title">Title goes here</div>
+        <div class="md-title">Media card</div>
+          <div class="md-subhead">Normal size</div>
         <br/>
       </md-card-header>
 
       
       <md-card-media>
-        <img src="https://s3-eu-west-1.amazonaws.com/barkibu-blog/blog+images/mi-perro-tiene-hipo-muy-seguido-que-le-pasa/perros-hipo-2.jpg" class="responsive" alt="Norway">
+        <img :src= publics.photo class="responsive" alt="Norway">
       </md-card-media>
         <br/>
       <div class="well well-sm"> 
-      <md-card-content>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio itaque ea nostrum.
-       
-      </md-card-content>
+  <md-card-expand>
+        <md-card-expand-content>
+          <md-card-content>
+            <div class="md-list-item-text">  <span> <strong>Raza:</strong>   {{publics.gende}}</span> 
+            </div> 
+            <div class="md-list-item-text"> <span> <strong>Comuna:</strong> {{publics.lastName}}</span>
+            </div>
+            <div class="md-list-item-text"> <span> <strong>Fecha:</strong> {{publics.age}}</span> 
+            </div> 
+            <div class="md-list-item-text"> <span> <strong>Contacto:</strong> {{publics.phone}}</span> 
+            </div>
+            <div> <span> <strong>Descripción:</strong> {{publics.email}}</span> 
+            </div>
+            
+          </md-card-content>
+        </md-card-expand-content>
+      </md-card-expand>
 
       <md-card-actions>
-         
+
+         <md-card-expand-trigger>
+            <md-button>Ver más</md-button>
+          </md-card-expand-trigger>
+
           <md-button class="md-icon-button">
              <v-icon medium>comment</v-icon>
           </md-button>
@@ -32,6 +51,7 @@
           <md-button class="md-icon-button">
              <v-icon medium>share</v-icon>
           </md-button>
+          
         </md-card-actions>
      </div>   
     </md-card>
@@ -71,10 +91,24 @@ import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 Vue.use(ElementUI);
 Vue.use(VueMaterial)
+import axios from 'axios';
 
 
 export default {
-  name: 'Media'
+  name: 'Media',
+  data() {
+    return {
+      publi: []      
+    }
+  },
+   mounted() {
+  axios.get("http://localhost:3000/publications")
+          .then(response => {
+            this.publi = response.data;
+            console.log(this.publi);
+          });
+
+  }
 }
 </script>
 

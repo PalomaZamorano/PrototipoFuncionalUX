@@ -149,7 +149,7 @@ Vue.use(VueMaterial)
         },
         email: {
           required
-                  }
+        }
       }
     },
     methods: {

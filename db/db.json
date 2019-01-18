@@ -1,64 +1,105 @@
 {
-  "actors": [
+  "publications": [
     {
-      "actorId": 1,
+      "id": 1,
+      "photo": "https://media.telemundo51.com/images/652*426/AHORA-PARQUE-PERROS.JPG" ,          
       "firstName": "PENELOPE",
-      "lastName": "GUINESS",
-      "lastUpdate": 1139988873000
+      "lastName": "Conchalí",
+      "age" : "18/01/2019",
+      "gende" : "Basenji,Basset hound",
+      "email" : "Se perdió anoche mientras estaba en la cocina",
+      "phone": "+56958025678"  
+
     },
     {
-      "actorId": 2,
+      "id": 2,
+      "photo": "https://www.radiozero.cl/static/2018/08/pitbull-992x500.jpg",
       "firstName": "NICK",
-      "lastName": "WAHLBERG",
-      "lastUpdate": 1139988873000
+      "lastName": "Conchalí",
+      "age" : "18/01/2019",
+      "gende" : "Basenji,Basset hound",
+      "email" : "Se perdió anoche mientras estaba en la cocina",
+      "phone": "+56958025678"
     },
     {
-      "actorId": 3,
+      "id": 3,
+      "photo": "https://media.telemundo51.com/images/652*426/AHORA-PARQUE-PERROS.JPG" ,
       "firstName": "ED",
-      "lastName": "CHASE",
-      "lastUpdate": 1139988873000
+      "lastName": "Conchalí",
+      "age" : "18/01/2019",
+      "gende" : "Basenji,Basset hound",
+      "email" : "Se perdió anoche mientras estaba en la cocina",
+      "phone": "+56958025678"
     },
     {
-      "actorId": 4,
+      "id": 4,
+      "photo": "https://www.radiozero.cl/static/2018/08/pitbull-992x500.jpg",
       "firstName": "JENNIFER",
-      "lastName": "DAVIS",
-      "lastUpdate": 1139988873000
+      "lastName": "La Cisterna",
+      "age" : "18/01/2019",
+      "gende" : "Basenji,Basset hound",
+      "email" : "Se perdió anoche mientras estaba en la cocina",
+      "phone": "+56958025678"
     },
     {
-      "actorId": 5,
+      "id": 5,
+      "photo": "https://www.nationalgeographic.com.es/medio/2018/10/19/04-australian-shepherd_5ca57e9a_800x800.jpg" ,
       "firstName": "JOHNNY",
-      "lastName": "LOLLOBRIGIDA",
-      "lastUpdate": 1139988873000
+      "lastName": "La Cisterna",
+      "age" : "18/01/2019",
+      "gende" : "Basenji,Basset hound",
+      "email" : "Se perdió anoche mientras estaba en la cocina",
+      "phone": "+56958025678"
     },
     {
-      "actorId": 6,
+      "id": 6,
+      "photo": "https://misanimales.com/wp-content/uploads/2017/08/los-perros-nos-lamen.jpg" ,
       "firstName": "BETTE",
-      "lastName": "NICHOLSON",
-      "lastUpdate": 1139988873000
+      "lastName": "La Cisterna",
+      "age" : "18/01/2019",
+      "gende" : "Basenji,Basset hound",
+      "email" : "Se perdió anoche mientras estaba en la cocina",
+      "phone": "+56958025678"
     },
     {
-      "actorId": 7,
+      "id": 7,
+      "photo": "https://www.nationalgeographic.com.es/medio/2018/10/19/04-australian-shepherd_5ca57e9a_800x800.jpg",
       "firstName": "GRACE",
-      "lastName": "MOSTEL",
-      "lastUpdate": 1139988873000
+      "lastName": "La Cisterna",
+      "age" : "18/01/2019",
+      "gende" : "Basenji,Basset hound",
+      "email" : "Se perdió anoche mientras estaba en la cocina",
+      "phone": "+56958025678"
     },
     {
       "actorId": 8,
+      "photo": "https://www.radiozero.cl/static/2018/08/pitbull-992x500.jpg",          
       "firstName": "MATTHEW",
-      "lastName": "JOHANSSON",
-      "lastUpdate": 1139988873000
+      "lastName": "La Cisterna",
+      "age" : "18/01/2019",
+      "gende" : "Basenji,Basset hound",
+      "email" : "Se perdió anoche mientras estaba en la cocina",
+      "phone": "+56958025678"
     },
     {
-      "actorId": 9,
+      "id": 9,
+      "photo": "https://www.nationalgeographic.com.es/medio/2018/10/19/04-australian-shepherd_5ca57e9a_800x800.jpg" ,
       "firstName": "JOE",
-      "lastName": "SWANK",
-      "lastUpdate": 1139988873000
+      "lastName": "La Cisterna",
+      "age" : "18/01/2019",
+      "gende" : "Basenji,Basset hound",
+      "email" : "Se perdió anoche mientras estaba en la cocina",
+      "phone": "+56958025678"
     },
     {
-      "actorId": 10,
+      "id": 10,
+      "photo": "https://media.telemundo51.com/images/652*426/AHORA-PARQUE-PERROS.JPG" ,          
       "firstName": "CHRISTIAN",
-      "lastName": "GABLE",
-      "lastUpdate": 1139988873000
+      "lastName": "La Cisterna",
+      "age" : "18/01/2019",
+      "gende" : "Basenji,Basset hound",
+      "email" : "Se perdió anoche mientras estaba en la cocina",
+      "phone": "+56958025678"
     }
   ]
 }

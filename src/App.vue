@@ -14,7 +14,7 @@
       <md-button to="/form-publ" class="md-icon-button">
         <v-icon medium>add_circle</v-icon>
       </md-button>          
-      <md-button class="md-icon-button">
+      <md-button to="/" class="md-icon-button">
         <v-icon medium>notifications</v-icon>
       </md-button>
       <md-button class="md-icon-button">
