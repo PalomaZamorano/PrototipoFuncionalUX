@@ -3,6 +3,7 @@ import VueRouter from 'vue-router';
 import Index from './Index.vue';
 import Actors from './Actors.vue';
 import ActorForm from './ActorForm.vue';
+import FormPubl from './FormPubl.vue';
 import BootstrapVue from 'bootstrap-vue';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap-vue/dist/bootstrap-vue.css';
@@ -19,7 +20,8 @@ Vue.use(VueResource);
 const routes = [
   { path: '/index', alias: '/', component: Index},
   { path:'/actors', component: Actors},
-  {path:'/agregarActor', component:ActorForm}
+  {path:'/agregarActor', component:ActorForm},
+  {path:'/form-publ', component:FormPubl}
 ]
 
 // Create the router instance and pass the `routes` option

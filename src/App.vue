@@ -11,7 +11,7 @@
       
          
       <input  type="text" placeholder="Buscar..."> 
-      <md-button class="md-icon-button">
+      <md-button to="/form-publ" class="md-icon-button">
         <v-icon medium>add_circle</v-icon>
       </md-button>          
       <md-button class="md-icon-button">
@@ -32,8 +32,6 @@
       <md-button  to="" >Encontrados</md-button>
     </md-toolbar>
 </div>
-    
-    
     <br/>
     <br/>
    
