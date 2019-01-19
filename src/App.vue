@@ -55,7 +55,7 @@
 <div id="navflotante" class="col-md-14 ml-auto">
   <md-toolbar class="md-accent" md-elevation="1" style="background-color: #3BB9D8;">
       <md-button to="" >Perdidos</md-button>
-      <md-button  to="" >Mapa</md-button>
+      <md-button  to="/map" >Mapa</md-button>
       <md-button  to="" >Encontrados</md-button>
     </md-toolbar>
 </div>
