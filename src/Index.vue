@@ -23,7 +23,7 @@
   <md-card-expand>
         <md-card-expand-content>
           <md-card-content>
-            <div class="md-list-item-text">  <span> <strong>Raza:</strong>   {{publics.gende}}</span> 
+            <div class="md-list-item-text">  <span> <strong>Raza:</strong>   {{publics.gender}}</span> 
             </div> 
             <div class="md-list-item-text"> <span> <strong>Comuna:</strong> {{publics.lastName}}</span>
             </div>

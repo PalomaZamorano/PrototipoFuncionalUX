@@ -21,7 +21,7 @@
               <md-field :class="getValidationClass('lastName')">
                 <label for="last-name">Comuna extravío</label>
                 <md-select name="last-name" id="last-name" autocomplete="family-name" v-model="form.lastName" :disabled="sending" >
-                <md-option  v-for="(comuna,index) in form.comunas" :value="comuna" :key="`comuna-${index}`" >{{comuna}}</md-option>
+                <md-option  v-for="(comuna,index) in comunas" :value="comuna" :key="`comuna-${index}`" >{{comuna}}</md-option>
                 </md-select>
 
                 <span class="md-error" v-if="!$v.form.lastName.required">La comuna de extravío es requerida</span>
@@ -30,39 +30,44 @@
             </div>
           </div>
 
-          <div class="md-layout md-gutter">
             <div class="md-layout-item md-small-size-100">
               <md-field :class="getValidationClass('gender')" >
                 <label for="gender">Raza</label>
-                <md-select name="gender" id="gender" v-model="form.gender" md-dense :disabled="sending">
-                  <md-option  v-for="(raza,index) in form.razas" :value="raza" :key="`raza-${index}`" >{{raza}}</md-option>
+                <md-select name="gender" id="gender" autocomplete="family-name" v-model="form.gender" md-dense :disabled="sending">
+                  <md-option  v-for="(raza,index) in razas" :value="raza" :key="`raza-${index}`" >{{raza}}</md-option>
                 </md-select>
                 <span class="md-error">La raza de la mascota es requerida</span>
               </md-field>
             </div>
 
             <div class="md-layout-item md-small-size-100">
-              <md-field >
+              <md-field  :class="getValidationClass('age')">
                 <md-input type="date" id="age" name="age" autocomplete="age" v-model="form.age" :disabled="sending" />
                 <span class="md-error" v-if="!$v.form.age.required">La fecha de extravío es requerida</span>
               </md-field>
             </div>
-          </div>
 
           <md-field :class="getValidationClass('email')">
             <label for="email">Descripción</label>
-            <md-input type="email" name="email" id="email" autocomplete="email" v-model="form.email" :disabled="sending" />
+            <md-textarea  md-autogrow name="email" id="email" v-model="form.email" autocomplete="email" :disabled="sending" />
             <span class="md-error" v-if="!$v.form.email.required">La descripción de el extravío es requerida</span>
+          </md-field>
+
+        <md-field :class="getValidationClass('phone')">
+            <label for="phone">Contacto (ej: 967529705)</label>
+            <md-input type="number" name="phone" id="phone" autocomplete="phone" v-model="form.phone" :disabled="sending"  />
+            <span class="md-error" v-if="!$v.form.phone.minlength">Ejemplo: 97864238</span>
           </md-field>
         </md-card-content>
 
         <md-progress-bar md-mode="indeterminate" v-if="sending" />
 
         <md-card-actions>
-          <md-button type="submit" class="md-primary" :disabled="sending">Enviar!</md-button>
+          <md-button type="submit" class="md-primary" @click="saveUser ()" :disabled="sending">Enviar!</md-button>
         </md-card-actions>
       </md-card>
 
+      
       <md-snackbar :md-active.sync="userSaved">La ficha se ha publicado correctamente! </md-snackbar>
     </form>
   </div>
@@ -84,6 +89,7 @@ import { validationMixin } from 'vuelidate'
   } from 'vuelidate/lib/validators'
 
 Vue.use(VueMaterial)
+import axios from 'axios';
 
 
   export default {
@@ -96,7 +102,9 @@ Vue.use(VueMaterial)
         gender: null,
         age: null,
         email: null,
-        comunas:['Cerrillos','Cerro Navia','Conchalí','El Bosque','Estación Central',
+        photo:"https://cdni.rt.com/actualidad/public_images/2018.03/article/5aa7a62a08f3d93d608b4567.jpg"
+      },
+      comunas:['Cerrillos','Cerro Navia','Conchalí','El Bosque','Estación Central',
               'Huechuraba','Independencia','La Cisterna','La Granja','La Florida','La Pintana','La Reina','Las Condes','Lo Barnechea','Lo Espejo','Lo Prado','Macul',
               'Maipú','Ñuñoa','Pedro Aguirre Cerda','Peñalolén','Providencia','Pudahuel','Quilicura','Quinta Normal','Recoleta','Renca','San Miguel','San Joaquín',
               'San Ramón','Santiago','Vitacura'],
@@ -125,10 +133,11 @@ Vue.use(VueMaterial)
                 ,"Sussex spaniel","Terranova","Terrier alemán","Terrier australiano","Terrier brasileño","Terrier chileno"
                 ,"Terrier escocés","Terrier galés","Terrier irlandés","Weimaraner","West Highland White Terrier","Whippet","Xoloitzcuintle"
                 ,"Yorkshire terrie","Otro"]
-      },
+                ,
       userSaved: false,
       sending: false,
-      lastUser: null
+      lastUser: null,
+      publi:[]
     }),
     validations: {
       form: {
@@ -141,20 +150,24 @@ Vue.use(VueMaterial)
           minLength: minLength(3)
         },
         age: {
-          required,
-          maxLength: maxLength(3)
+          required        
         },
         gender: {
           required
         },
         email: {
           required
+        },
+        phone: {
+          required,
+          minLength: minLength(9)
         }
       }
     },
     methods: {
       getValidationClass (fieldName) {
         const field = this.$v.form[fieldName]
+          
 
         if (field) {
           return {
@@ -169,17 +182,31 @@ Vue.use(VueMaterial)
         this.form.age = null
         this.form.gender = null
         this.form.email = null
+        this.form.phone = null
       },
       saveUser () {
+        this.$v.$touch()
+        if (this.$v.$invalid ) {
+          console.log(this.form.phone);
+          return 
+        }else{
         this.sending = true
-
         // Instead of this timeout, here you can call your API
+         axios.post("http://localhost:3000/publications",this.form)
+          .then(response => {
+            this.publi = response.data;
+            console.log(this.publi);
+            console.log(this.form.gender)
+          });
+
         window.setTimeout(() => {
           this.lastUser = `${this.form.firstName} ${this.form.lastName}`
           this.userSaved = true
           this.sending = false
           this.clearForm()
         }, 1500)
+
+        }
       },
       validateUser () {
         this.$v.$touch()
