@@ -57,6 +57,7 @@
             <label for="phone">Contacto (ej: 967529705)</label>
             <md-input type="number" name="phone" id="phone" autocomplete="phone" v-model="form.phone" :disabled="sending"  />
             <span class="md-error" v-if="!$v.form.phone.minlength">Ejemplo: 97864238</span>
+            <span class="md-error" v-if="!$v.form.phone.maxlength">Ejemplo: 97864238</span>
           </md-field>
         </md-card-content>
 
@@ -160,7 +161,8 @@ import axios from 'axios';
         },
         phone: {
           required,
-          minLength: minLength(9)
+          minLength: minLength(9),
+          maxLength: maxLength(9)
         }
       }
     },
@@ -195,8 +197,8 @@ import axios from 'axios';
          axios.post("http://localhost:3000/publications",this.form)
           .then(response => {
             this.publi = response.data;
-            console.log(this.publi);
-            console.log(this.form.gender)
+            window.location.href = '/'
+
           });
 
         window.setTimeout(() => {

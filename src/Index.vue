@@ -2,15 +2,15 @@
   <div class="row">
 
     <div class="col-6 col-12-narrower">
-    <md-card  v-for="(publics,key) in publi"  :key="`publics-${key}`"> 
+    <md-card  v-for="(publics,key) in publi.slice().reverse()"  :key="`publics-${key}`"> 
       
       <md-card-header>
         <md-avatar>
-          <img :src= publics.photo alt="Avatar">
+          <img src= "https://cdn.iconscout.com/icon/free/png-256/avatar-373-456325.png" alt="Avatar">
         </md-avatar>
 
-        <div class="md-title">Media card</div>
-          <div class="md-subhead">Normal size</div>
+          <div class="md-subhead">Nombre Mascota:</div>
+          <div class="md-title">{{publics.firstName}}</div>
         <br/>
       </md-card-header>
 

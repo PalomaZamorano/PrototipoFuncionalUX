@@ -5,8 +5,8 @@
   <div class="col-md-14 ml-auto">  
   <md-toolbar class="md-accent" md-elevation="1" style="background-color: #3BB9D8;position: fixed;">
 
-    <img class = "md-title" src="images/icono.png" alt="Icono"
-								 style="width:50px;height:50px;" >
+   <a href="/"> <img class = "md-title" src="images/icono.png" alt="Icono"
+								 style="width:50px;height:50px;" ></a>
       
       
          
