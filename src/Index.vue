@@ -1,6 +1,6 @@
 <template>
   <div class="row">
-
+   
     <div class="col-6 col-12-narrower">
     <md-card  v-for="(publics,key) in publi.slice().reverse()"  :key="`publics-${key}`"> 
       

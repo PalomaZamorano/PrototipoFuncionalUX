@@ -64,7 +64,7 @@
         <md-progress-bar md-mode="indeterminate" v-if="sending" />
 
         <md-card-actions>
-          <md-button type="submit" class="md-primary" @click="saveUser ()" :disabled="sending">Enviar!</md-button>
+          <md-button type="submit" class="md-primary"  :disabled="sending">Enviar!</md-button>
         </md-card-actions>
       </md-card>
 

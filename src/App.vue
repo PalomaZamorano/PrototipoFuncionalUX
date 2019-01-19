@@ -13,13 +13,40 @@
       <input  type="text" placeholder="Buscar..."> 
       <md-button to="/form-publ" class="md-icon-button">
         <v-icon medium>add_circle</v-icon>
-      </md-button>          
-      <md-button to="/" class="md-icon-button">
-        <v-icon medium>notifications</v-icon>
-      </md-button>
-      <md-button class="md-icon-button">
-        <v-icon medium>account_box</v-icon>
-      </md-button>
+      </md-button> 
+
+ <b-dropdown variant="link" size="lg" no-caret  >
+    <template slot="button-content">
+      <md-badge md-content="2">           
+        <v-icon id ="link" medium>notifications </v-icon>
+      </md-badge>
+    </template>
+    <b-dropdown-item href="#">
+      <md-avatar>
+          <img src= "https://media.telemundo51.com/images/652*426/AHORA-PARQUE-PERROS.JPG" alt="Avatar">
+        </md-avatar> 
+      CHRISTIAN
+    </b-dropdown-item>
+    <b-dropdown-item href="#">
+      <md-avatar>
+          <img src= "https://www.radiozero.cl/static/2018/08/pitbull-992x500.jpg" alt="Avatar">
+        </md-avatar>
+        NICK     
+    </b-dropdown-item>
+  </b-dropdown>
+
+  <b-dropdown variant="link" size="lg" no-caret  >
+    <template slot="button-content">          
+        <v-icon id ="link" medium>account_box</v-icon>
+    </template>
+    <b-dropdown-item href="#">
+      Mi perfil
+    </b-dropdown-item>
+    <b-dropdown-item href="#">
+      Salir   
+    </b-dropdown-item>
+  </b-dropdown>
+
       
     </md-toolbar>
 </div>
@@ -34,7 +61,8 @@
 </div>
     <br/>
     <br/>
-   
+    <br/>
+    <br/>
 <main class="container">
       <router-view></router-view>
     </main>
@@ -97,7 +125,10 @@ export default {
 				  text-align: center;
 				  padding:8px 12px;
 				  text-decoration: none;
-				}	
+				}
+      #link{
+         color: white;
+      }  	
 
 
 			
