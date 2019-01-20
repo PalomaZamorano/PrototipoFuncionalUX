@@ -82,7 +82,7 @@
              <v-icon medium  @click="ids(index)">comment</v-icon>
           </md-button>
 
-          <md-button class="md-icon-button" >
+          <md-button class="md-icon-button" @click="show1()" >
              <v-icon medium>share</v-icon>
           </md-button>
           
@@ -112,7 +112,30 @@
 
    
     </div>
-         
+      
+      <div class="col-md-12" style="text-align: center">
+      <modal name="share"
+       :width="100"
+       :height="200"
+       :resizable= true
+       >
+       
+        <div>
+        <b-list-group>
+        <b-list-group-item> 
+          <facebook :url="url" title="HelPet" scale="3"></facebook>
+        </b-list-group-item>
+        <b-list-group-item>
+          <twitter :url="url" title="HelPet" scale="3"></twitter>
+        </b-list-group-item>
+        <b-list-group-item>
+          <whats-app :url="url" title="HelPet" scale="3"></whats-app>
+        </b-list-group-item>
+        </b-list-group>
+    </div>
+          
+       </modal>
+      </div>   
        
   </div>
 </template>
@@ -157,12 +180,21 @@ Vue.use(VModal)
 
 import Vuetify from 'vuetify'
 Vue.use(Vuetify)
-
+import {
+  Facebook,
+  Twitter,
+  WhatsApp
+} from "vue-socialmedia-share";
 
 
 
 export default {
   name: 'Media',
+  components: {
+    Facebook,
+    Twitter,
+    WhatsApp
+  },
   data() {
     return {
       publi: [],
@@ -172,7 +204,8 @@ export default {
       comm:null,
       cos:[],
       element:[],
-      ind:null
+      ind:null,
+      url: "https://www.abc.es/media/ciencia/2017/07/19/perro-domesticacion-9349-k4YF--620x349@abc.jpg"
     }
   },
    mounted() {
@@ -213,6 +246,12 @@ export default {
     },
     ids(id){
       this.ind = id;
+    },
+    show1 () {
+      this.$modal.show('share');
+    },
+    hide1 () {
+      this.$modal.hide('share');
     }
 
   }
