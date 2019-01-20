@@ -7,6 +7,7 @@ import FormPubl from './FormPubl.vue';
 import MapPlace from './MapPlace.vue';
 
 import IndividualCard from './IndividualCard.vue';
+import Perfil from './Perfil.vue';
 import BootstrapVue from 'bootstrap-vue';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap-vue/dist/bootstrap-vue.css';
@@ -29,7 +30,8 @@ const routes = [
   {path:'/agregarActor', component:ActorForm},
   {path:'/form-publ', component:FormPubl},
   {path:'/map',component:MapPlace},
-  {path:'/card/:id',component:IndividualCard}
+  {path:'/card/:id',component:IndividualCard},
+  {path:'/perfil',component:Perfil}
 ]
 
 // Create the router instance and pass the `routes` option

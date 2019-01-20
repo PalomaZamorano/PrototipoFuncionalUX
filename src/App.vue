@@ -39,7 +39,7 @@
     <template slot="button-content">          
         <v-icon id ="link" medium>account_box</v-icon>
     </template>
-    <b-dropdown-item href="#">
+    <b-dropdown-item href="#/perfil">
       Mi perfil
     </b-dropdown-item>
     <b-dropdown-item href="#">
