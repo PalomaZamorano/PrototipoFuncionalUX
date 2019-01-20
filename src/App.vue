@@ -21,13 +21,13 @@
         <v-icon id ="link" medium>notifications </v-icon>
       </md-badge>
     </template>
-    <b-dropdown-item href="#">
+    <b-dropdown-item href="#/card/10">
       <md-avatar>
           <img src= "https://media.telemundo51.com/images/652*426/AHORA-PARQUE-PERROS.JPG" alt="Avatar">
         </md-avatar> 
       CHRISTIAN
     </b-dropdown-item>
-    <b-dropdown-item href="#">
+    <b-dropdown-item href="#/card/9">
       <md-avatar>
           <img src= "https://www.radiozero.cl/static/2018/08/pitbull-992x500.jpg" alt="Avatar">
         </md-avatar>
