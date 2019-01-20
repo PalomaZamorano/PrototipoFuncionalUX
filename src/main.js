@@ -31,7 +31,8 @@ const routes = [
   {path:'/form-publ', component:FormPubl},
   {path:'/map',component:MapPlace},
   {path:'/card/:id',component:IndividualCard},
-  {path:'/perfil',component:Perfil}
+  {path:'/perfil',component:Perfil},
+  {path:'/encontrados',component:Index}
 ]
 
 // Create the router instance and pass the `routes` option
