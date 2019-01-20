@@ -52,7 +52,7 @@
       </md-card-media>
         <br/>
       <div class="well well-sm"> 
-  <md-card-expand>
+      <md-card-expand>
         <md-card-expand-content>
           <md-card-content>
             <div class="md-list-item-text">  <span> <strong>Raza:</strong>   {{publics.gender}}</span> 
@@ -63,22 +63,11 @@
             </div> 
             <div class="md-list-item-text"> <span> <strong>Contacto:</strong> {{publics.phone}}</span> 
             </div>
-            <div> <span> <strong>Descripción: {{index}}</strong> {{publics.email}}</span> 
-             
-            <div v-for="(coss,key) in cos[index]"  :key="`coss-${key}`">
-             <b-card-group deck class="mb-3">
-              <b-card border-variant="light"
-                header="Light"
-                class="text-center">
-              <p class="card-text">{{coss}}</p>
-              </b-card>
-              </b-card-group>
-            </div>  
-
+            <div> <span> <strong>Descripción:</strong> {{publics.email}}</span> 
             </div>
           </md-card-content>
         </md-card-expand-content>
-      </md-card-expand>
+    </md-card-expand>
 
   
        
@@ -98,13 +87,33 @@
           </md-button>
           
         </md-card-actions>
-        
-       
      </div>   
+
+   <b-btn  v-b-toggle="'accordion' + index" variant="outline-primary">
+    Ver comentarios...
+  </b-btn>
+      <br/>
+      <br/>
+     <b-collapse :id="'accordion' + index"  class="mt-2">
+             <b-card-group deck class="mb-3"
+              v-for="(coss,key) in cos[index]"  :key="`coss-${key}`">
+              <b-card
+                class="text-center"
+                sub-title="Nombre Usuario:"
+                >
+              <p class="card-text">{{coss}}</p>
+              </b-card>
+              </b-card-group>  
+      </b-collapse>
+  
+
+
     </md-card>
 
+   
     </div>
-             
+         
+       
   </div>
 </template>
 
@@ -146,6 +155,11 @@ import VModal from 'vue-js-modal/dist/ssr.index'
 Vue.use(VModal)
 
 
+import Vuetify from 'vuetify'
+Vue.use(Vuetify)
+
+
+
 
 export default {
   name: 'Media',
@@ -159,7 +173,6 @@ export default {
       cos:[],
       element:[],
       ind:null
-            
     }
   },
    mounted() {
@@ -180,6 +193,7 @@ export default {
             for(var x=0; x<this.comm.length; x++){
               this.cos[x] = this.comm[x].comment  
             }
+            
           });
   },
   methods:{
@@ -193,9 +207,9 @@ export default {
     enviar(text){
      
       this.element = this.cos[this.ind];
-      this.element.push(text); 
-
-      console.log(this.element);
+      this.element.push(text);
+      this.text = "";
+      this.hide(); 
     },
     ids(id){
       this.ind = id;
