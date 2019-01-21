@@ -1,8 +1,8 @@
 <template>
   <div class="row">
-   
+    <app-input :msg="search" @searchChanged="search = $event"></app-input>
     <div  class="col-6 col-12-narrower">
-    <md-card  v-for="(publics,index) in publi.slice().reverse()"  :key="`publics-${index}`"> 
+    <md-card  v-for="(publics,index) in filteredPubli.slice().reverse()"  :key="`publics-${index}`"> 
       
       <md-card-header>
         <md-avatar>
@@ -177,7 +177,6 @@ import VModal from 'vue-js-modal'
 import VModal from 'vue-js-modal/dist/ssr.index'
 Vue.use(VModal)
 
-
 import Vuetify from 'vuetify'
 Vue.use(Vuetify)
 import {
@@ -186,6 +185,8 @@ import {
   WhatsApp
 } from "vue-socialmedia-share";
 
+import App from './App.vue';
+
 
 
 export default {
@@ -193,7 +194,9 @@ export default {
   components: {
     Facebook,
     Twitter,
-    WhatsApp
+    WhatsApp,
+    'app-input': App
+
   },
   data() {
     return {
@@ -203,6 +206,7 @@ export default {
       text:"",
       comm:null,
       cos:[],
+      search: '',
       element:[],
       ind:null,
       url: "https://www.abc.es/media/ciencia/2017/07/19/perro-domesticacion-9349-k4YF--620x349@abc.jpg"
@@ -252,8 +256,15 @@ export default {
     },
     hide1 () {
       this.$modal.hide('share');
-    }
+    },
 
+  },
+  computed:{
+    filteredPubli:function(){
+      return this.publi.filter((pub)=>{
+        return pub.firstName.match(this.search)
+      });
+    }
   }
 }
 </script>

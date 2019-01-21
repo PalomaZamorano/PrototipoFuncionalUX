@@ -7,10 +7,8 @@
 
    <a href="/"> <img class = "md-title" src="images/icono.png" alt="Icono"
 								 style="width:50px;height:50px;" ></a>
-      
-      
-         
-      <input  type="text" placeholder="Buscar..."> 
+
+      <input type="text" :value="search" @input="changeSearch" place-holder="Buscar...">
       <md-button to="/form-publ" class="md-icon-button">
         <v-icon medium>add_circle</v-icon>
       </md-button> 
@@ -90,14 +88,25 @@ import 'vue-material/dist/theme/default.css'
 
 
 
-
 export default {
-
+  props:['msg'],
+  data(){
+    return{
+      search:''
+    }
+  },
+  methods:{
+    changeSearch(event){
+      this.search=event.target.value;
+      this.$emit('searchChanged', this.search)
+    }
+  }
 }
 </script>
 
-<style>
-	
+<style lang="scss" scoped>
+      $primary:#FFF;
+      $accent: #d34747;
 			#navflotante{
         z-index:10;
 				overflow: hidden;
@@ -121,14 +130,20 @@ export default {
    
 			#search {
 				  display: block;
-				  color: white;
+				  color: black;
 				  text-align: center;
 				  padding:8px 12px;
 				  text-decoration: none;
 				}
       #link{
          color: white;
-      }  	
+      }
+      input{
+          color: #f2f2f2;
+        }
+      ::placeholder{
+        color: #000000;
+      }
 
 
 			
