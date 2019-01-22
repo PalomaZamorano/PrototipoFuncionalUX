@@ -1,7 +1,7 @@
 <template>
   <div class="row">
-    <app-input :msg="search" @searchChanged="search = $event"></app-input>
     <div  class="col-6 col-12-narrower">
+
     <md-card  v-for="(publics,index) in filteredPubli.slice().reverse()"  :key="`publics-${index}`"> 
       
       <md-card-header>
@@ -184,9 +184,8 @@ import {
   Twitter,
   WhatsApp
 } from "vue-socialmedia-share";
-
-import App from './App.vue';
-
+import EventBus from './event-bus.js';
+import {bus} from './main';
 
 
 export default {
@@ -195,7 +194,6 @@ export default {
     Facebook,
     Twitter,
     WhatsApp,
-    'app-input': App
 
   },
   data() {
@@ -207,12 +205,16 @@ export default {
       comm:null,
       cos:[],
       search: '',
+      filtro:'',
       element:[],
       ind:null,
       url: "https://www.abc.es/media/ciencia/2017/07/19/perro-domesticacion-9349-k4YF--620x349@abc.jpg"
     }
   },
    mounted() {
+     bus.$on("a-s-d",this.filtro);
+     console.log(this.filtro);
+
    axios.get("http://localhost:3000/publications")
           .then(response => {
             this.publi = response.data;

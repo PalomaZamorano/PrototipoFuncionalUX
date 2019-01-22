@@ -1,95 +1,56 @@
 <template>
-  <div class="row">
-
-    <div class="col">
-        <gmap-map
-      :center="center"
-      :zoom="12"
-      style="width:100%;  height: 550px;">
-      <!--<gmap-marker
-        :key="index"
-        v-for="(m, index) in markers"   
-        :position="m.position"
-        @click="center=m.position"
-      ></gmap-marker>-->
-    </gmap-map>
-
-    </div>
-
-  </div>
+      <v-layout id="map" align-center justify-center column fill-height/>
 </template>
-
-<style lang="scss" scoped>
-  .md-card {
-    overflow: hidden;
-    width: 320px;
-    margin: 10px;
-    vertical-align: top;
-    overflow: hidden;
-    padding: 16px;
-
-  }
-  .responsive {
-            height: auto;
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
-          }
-
+<style>
+#map { height: 600px; width: 360px;}
 </style>
 <script>
-import Vue from 'vue';
-import VueMaterial from 'vue-material'
-import 'vue-material/dist/vue-material.min.css'
-import 'vue-material/dist/theme/default.css'
-import ElementUI from 'element-ui';
-import 'element-ui/lib/theme-chalk/index.css';
-import * as VueGoogleMaps from 'vue2-google-maps';
-Vue.use(ElementUI);
-Vue.use(VueMaterial)
-
-export default {
-  name: "Map",
-  data() {
-    return {
-      // default to Montreal to keep it simple
-      // change this to whatever makes sense
-      center: { lat: 45.508, lng: -73.587 },
-      markers: [],
-      places: [],
-      currentPlace: null
-    };
-  },
-
-  mounted() {
-    this.geolocate();
-  },
-
-  methods: {
-    // receives a place object via the autocomplete component
-    setPlace(place) {
-      this.currentPlace = place;
+/*
+* Mapa coroplético basado en la población de las regiones de Chile
+ incluyendo tres funciones distintas de creación de escala de colores
+* Basado en https://leafletjs.com/examples/choropleth/
+* Explicación de escalas en https://roadtolarissa.com/coloring-maps/
+* Colores obtenidos de https://bl.ocks.org/emeeks/8cdec64ed6daf955830fa723252a4ab3
+* Archivos GeoJson tienen esta estructura:
+  {
+    "type": "Feature",
+    "properties": {
+        "name": "Alabama",
+        "density": 94.65
     },
-    addMarker() {
-      if (this.currentPlace) {
-        const marker = {
-          lat: this.currentPlace.geometry.location.lat(),
-          lng: this.currentPlace.geometry.location.lng()
-        };
-        this.markers.push({ position: marker });
-        this.places.push(this.currentPlace);
-        this.center = marker;
-        this.currentPlace = null;
-      }
-    },
-    geolocate: function() {
-      navigator.geolocation.getCurrentPosition(position => {
-        this.center = {
-          lat: position.coords.latitude,
-          lng: position.coords.longitude
-        };
-      });
-    }
+    "geometry": ...
+    ...
   }
-};
+*/
+import Vuetify from 'vuetify'
+import axios from 'axios';
+import L from 'leaflet';
+require('leaflet/dist/leaflet.css'); //css se configua en webpack.config con { test: /\.css$/, loader: "style-loader!css-loader" }
+// Datos geográficos de chile desde https://github.com/jlhonora/geo
+import santiago from './santiago.json'; //solo como ejemplo, datos deben ser obtenidos desde servicio rest
+export default{
+  data(){
+    return {
+      publi:[]
+    }
+  },
+  mounted(){
+    var map = L.map('map', {
+      center:[-33.449, -70.687],
+      zoom: 10
+    });
+    L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
+    }).addTo(map);
+    L.marker([-33.449,-70.687]).addTo(map);
+    axios.get("http://localhost:3000/publications").then(response => {
+      this.publi = response.data;
+      for(var x=0; x<response.data.length; x++){
+        console.log(response.data[x].geoloca);
+        L.marker(response.data[x].geoloca).bindPopup("<b>Nombre: "+response.data[x].firstName+"</b><br>Fecha extravio: "+response.data[x].age).openPopup().addTo(map);  
+      }
+    });
+  }
+}
+//L.geoJson(santiago, {style: style}).addTo(map);
 </script>

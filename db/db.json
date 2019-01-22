@@ -8,7 +8,8 @@
       "age": "18/01/2019",
       "gender": "Basenji,Basset hound",
       "email": "Se perdió anoche mientras estaba en la cocina",
-      "phone": "958025678"
+      "phone": "958025678",
+      "geoloca":[-33.450951,-70.671718]
     },
     {
       "id": 2,
@@ -18,7 +19,8 @@
       "age": "18/01/2019",
       "gender": "Basenji,Basset hound",
       "email": "Se perdió anoche mientras estaba en la cocina",
-      "phone": "958025678"
+      "phone": "958025678",
+      "geoloca":[-33.461589,-70.685667]
     },
     {
       "id": 3,
@@ -28,7 +30,8 @@
       "age": "18/01/2019",
       "gender": "Basenji,Basset hound",
       "email": "Se perdió anoche mientras estaba en la cocina",
-      "phone": "958025678"
+      "phone": "958025678",
+      "geoloca":[-33.462634,-70.611031]
     },
     {
       "id": 4,
@@ -38,7 +41,8 @@
       "age": "18/01/2019",
       "gender": "Basenji,Basset hound",
       "email": "Se perdió anoche mientras estaba en la cocina",
-      "phone": "958025678"
+      "phone": "958025678",
+      "geoloca":[-33.458051, -70.616814]
     },
     {
       "id": 5,
@@ -48,7 +52,8 @@
       "age": "18/01/2019",
       "gender": "Basenji,Basset hound",
       "email": "Se perdió anoche mientras estaba en la cocina",
-      "phone": "958025678"
+      "phone": "958025678",
+      "geoloca":[-33.455392, -70.677716]
     },
     {
       "id": 6,
@@ -58,7 +63,8 @@
       "age": "18/01/2019",
       "gender": "Basenji,Basset hound",
       "email": "Se perdió anoche mientras estaba en la cocina",
-      "phone": "958025678"
+      "phone": "958025678",
+      "geoloca":[-33.455723, -70.684400]
     },
     {
       "id": 7,
@@ -68,7 +74,8 @@
       "age": "18/01/2019",
       "gender": "Basenji,Basset hound",
       "email": "Se perdió anoche mientras estaba en la cocina",
-      "phone": "958025678"
+      "phone": "958025678",
+      "geoloca":[-33.450154,-70.686379]
     },
     {
       "id": 8,
@@ -78,7 +85,8 @@
       "age": "18/01/2019",
       "gender": "Basenji,Basset hound",
       "email": "Se perdió anoche mientras estaba en la cocina",
-      "phone": "958025678"
+      "phone": "958025678",
+      "geoloca":[-33.441167, -70.680677]
     },
     {
       "id": 9,
@@ -88,7 +96,8 @@
       "age": "18/01/2019",
       "gender": "Basenji,Basset hound",
       "email": "Se perdió anoche mientras estaba en la cocina",
-      "phone": "958025678"
+      "phone": "958025678",
+      "geoloca":[-33.440952, -70.684625]
     },
     {
       "id": 10,
@@ -98,7 +107,8 @@
       "age": "18/01/2019",
       "gender": "Basenji,Basset hound",
       "email": "Se perdió anoche mientras estaba en la cocina",
-      "phone": "958025678"
+      "phone": "958025678",
+      "geoloca":[-33.450154,-70.686379]
     }
   ],
   "comments": [

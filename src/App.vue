@@ -8,7 +8,7 @@
    <a href="/"> <img class = "md-title" src="images/icono.png" alt="Icono"
 								 style="width:50px;height:50px;" ></a>
 
-      <input type="text" :value="search" @input="changeSearch" place-holder="Buscar...">
+      <input type="text" placeholder="Buscar..." v-model="filtro" @input="emitiendo">
       <md-button to="/form-publ" class="md-icon-button">
         <v-icon medium>add_circle</v-icon>
       </md-button> 
@@ -85,20 +85,27 @@ Vue.use(Vuetify)
 import VueMaterial from 'vue-material'
 import 'vue-material/dist/vue-material.min.css'
 import 'vue-material/dist/theme/default.css'
+import EventBus from './event-bus';
+import {bus} from "./main";
+
+
 
 
 
 export default {
-  props:['msg'],
   data(){
     return{
-      search:''
+      filtro:''
     }
   },
   methods:{
+    emitiendo(){
+      bus.$emit("a-s-d",this.filtro);
+      console.log(this.filtro);
+    },
     changeSearch(event){
-      this.search=event.target.value;
-      this.$emit('searchChanged', this.search)
+      //this.filtro=event.target.value;
+     // EventBus.$emit('i-searchChanged',1);
     }
   }
 }
@@ -107,6 +114,8 @@ export default {
 <style lang="scss" scoped>
       $primary:#FFF;
       $accent: #d34747;
+      $blue: #21d4fd;
+      $purple: #b721ff;
 			#navflotante{
         z-index:10;
 				overflow: hidden;
@@ -116,7 +125,7 @@ export default {
         width: 100%;
 				}
       .active{
-       float: left;
+      float: left;
       display: block;
       color: #f2f2f2;
       text-align: center;
@@ -138,15 +147,13 @@ export default {
       #link{
          color: white;
       }
-      input{
-          color: #f2f2f2;
-        }
       ::placeholder{
-        color: #000000;
+        color: 'red'
       }
-
-
-			
-				
+      ::-webkit-input-placeholder {
+      /* Chrome/Opera/Safari */
+      color: rgba(19, 40, 48, 0.54);
+      }
+    
 				</style>
         

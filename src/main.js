@@ -23,6 +23,16 @@ Vue.use(VueGoogleMaps, {
     key: 'AIzaSyCY64oyowxePuPul37MYVfsIZpF8pLNQRI',
     libraries: 'places',
   },})
+import L from 'leaflet';
+delete L.Icon.Default.prototype._getIconUrl;
+
+L.Icon.Default.mergeOptions({
+  iconRetinaUrl: require('leaflet/dist/images/marker-icon-2x.png'),
+  iconUrl: require('leaflet/dist/images/marker-icon.png'),
+  shadowUrl: require('leaflet/dist/images/marker-shadow.png')
+});
+
+export const bus = new Vue();
 
 const routes = [
   { path: '/index', alias: '/', component: Index},
@@ -39,6 +49,7 @@ const routes = [
 const router = new VueRouter({
   routes
 })
+
 
 new Vue({
   el: '#app',
